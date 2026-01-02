@@ -13,11 +13,11 @@ jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Metrics
+      - name: Generate Metrics (base)
         uses: lowlighter/metrics@latest
         with:
           # ファイル名と出力先
-          filename: output/metrics.svg
+          filename: output/metrics.base.svg
           # トークンを指定（プライベートリポジトリを含める場合）
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           # パブリックリポジトリのみの場合は、以下のコメントを解除
@@ -26,12 +26,36 @@ jobs:
           # 基本設定
           base: header, activity, community, repositories, metadata
 
-          # プラグイン設定
+      - name: Generate Metrics (details)
+        uses: lowlighter/metrics@latest
+        with:
+          # ファイル名と出力先
+          filename: output/details.svg
+          # トークンを指定（プライベートリポジトリを含める場合）
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # パブリックリポジトリのみの場合は、以下のコメントを解除
+          # token: ${{ secrets.GITHUB_TOKEN }}
+
+          # 詳細系のプラグイン
+          base: ""
           plugin_languages: yes
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           plugin_followup: yes
           plugin_followup_indepth: yes
+
+      - name: Generate Metrics (achievements)
+        uses: lowlighter/metrics@latest
+        with:
+          # ファイル名と出力先
+          filename: output/metrics.plugin.achievements.compact.svg
+          # トークンを指定（プライベートリポジトリを含める場合）
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # パブリックリポジトリのみの場合は、以下のコメントを解除
+          # token: ${{ secrets.GITHUB_TOKEN }}
+
+          # 実績プラグイン
+          base: ""
           plugin_achievements: yes
           plugin_achievements_display: compact
           plugin_achievements_threshold: X
