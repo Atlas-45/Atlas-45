@@ -6,7 +6,7 @@
 ---
 
 ## About Me
-- 高校1年
+- 高校2年
 - 領域: **HCI,AI,XR,Security**
 
 ---
