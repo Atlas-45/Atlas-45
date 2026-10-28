@@ -1,8 +1,5 @@
 #  Hi, I'm Subaru Kataoka
 
-> デジタルから現実へ実装する  
-> Designing new perception & experiences through HCI, AI, and XR
-
 ---
 
 ## About Me
